@@ -9,21 +9,25 @@ import { Redirect } from "react-router-dom";
 class Login extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      ref : false
+    }
     this.onhandlerSubmit = this.onhandlerSubmit.bind(this);
   }
   static contextType = AuthContext;
 
   onhandlerSubmit = e => {
-    //e.preventDefault();
+    e.preventDefault();
     this.context.login();
-    history.push("/");
-    //return <Redirect to="/" />;
+    this.setState({ref:true});
+    // history.push("/");
+     //return <Redirect to="/" />;
   };
 
   render() {
     console.log(this.context);
     return (
+      this.state.ref===true ?<Redirect to="/" />:
       <div className="container-scroller">
         <div className="container-fluid page-body-wrapper full-page-wrapper">
           <div className="content-wrapper d-flex align-items-center auth"></div>

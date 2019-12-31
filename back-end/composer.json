@@ -1,0 +1,12 @@
+{
+    "name": "ae/back-end",
+    "require": {
+        "firebase/php-jwt": "^5.0"
+    },
+    "authors": [
+        {
+            "name": "Abdelouahedd",
+            "email": "ennouriabdelouahed@gmail.com"
+        }
+    ]
+}
