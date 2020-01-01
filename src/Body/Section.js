@@ -1,53 +1,38 @@
-//import React, { useContext, useEffect } from "react";
-// import { AuthContext } from "../provider/AuthContext";
-
-// const Section = () => {
-//   const context = useContext(AuthContext)
-//   useEffect(() => {
-//     console.log(context);
-//   }, [context])
-//   return (
-//     <div>
-//       <h1>{JSON.stringify(context.state)}</h1>
-//       {/* <button onClick={()=>context.dispatcher({type:"LOGIN"})}>l</button> */}
-//     </div>
-//   );
-// }
-
-// export default Section;
-
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import history from "../history";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./section.css";
+import 'font-awesome/css/font-awesome.min.css';
+import SideBar from "./sideBar";
+import Footer from "./Footer";
+import Dashboard from "./Dashboard";
 
 class Section extends Component {
-
   render() {
     return (
-      <div>
-        <h1>Hello {this.props.user.token}</h1>
-        <button onClick={() => this.props.setUser()}>login</button>
-        <button onClick={() => { this.props.logout(); history.push('/login') }}>lgout</button>
-      </div>
-    )
+      <React.Fragment>
+        <div id="wrapper">
+          <SideBar />
+          <div id="content-wrapper" className="d-flex flex-column">
+            <div id="content">  
+              <div className="container-fluid">
+                <Dashboard />
+              </div>
+            </div>
+            <Footer />
+          </div>
+        </div>
+      </React.Fragment>
+    );  
   }
 }
 
-const mapStateToProps = (state) => {
-  return { user: state.user };
+function mapStateToProps(state) {
+  return { user: state.reducer };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUser: () => {
-      dispatch({ type: "LOGIN" })
-    },
-    logout: () => {
-      dispatch({ type: "LOGOUT" })
-    }
-  }
-}
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Section)
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Section);

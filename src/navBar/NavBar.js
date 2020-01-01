@@ -3,11 +3,19 @@ import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { FaUserAlt } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import logo from "../images/logoEnsa.png";
-
+import * as actions from '../redux/actions/auth';
+import history from '../history';
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import "font-awesome/css/font-awesome.min.css";
+import { connect } from "react-redux";
 class NavBar extends Component {
+
+  logOut = (e) => {
+    e.preventDefault();
+    this.props.onLogout();
+    history.push("/login");
+  }
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -31,7 +39,9 @@ class NavBar extends Component {
                 <FaUserAlt />
                 &nbsp; Profile
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.1" className="dropdown-item">
+              <NavDropdown.Item href="#action/3.1" className="dropdown-item"
+                onClick={(e)=>this.logOut(e)}
+              >
                 <IoMdLogOut />
                 &nbsp; Sign Out
               </NavDropdown.Item>
@@ -43,4 +53,10 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogout: () => dispatch(actions.logOut())
+  };
+};
+export default connect(null, mapDispatchToProps)(NavBar);

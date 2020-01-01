@@ -50,7 +50,7 @@ class EnsiegnatDaoImp implements EnsiegnatDAO{
         $stmt = $con->prepare("SELECT * FROM enseignant WHERE email = ? ");
         $stmt->bindParam(1,$email);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     function choisirModule($idMod)
@@ -67,7 +67,6 @@ class EnsiegnatDaoImp implements EnsiegnatDAO{
         $stmt->execute();
         if($stmt->rowCount()>0){
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            print_r($row);
          if(password_verify($pass,$row["passwrd"])){
              return 1;
          }else{
@@ -86,8 +85,9 @@ class EnsiegnatDaoImp implements EnsiegnatDAO{
         $sql = "SELECT * FROM enseignant";
         $stm = $con->prepare($sql);
         $stm->execute();
-        return ($stm->fetch(PDO::FETCH_ASSOC));
+        return ($stm->fetchAll(PDO::FETCH_ASSOC));
     }
+
     function userExiste($email){
         $cnx = Cnx::getInstance();
         $con = $cnx->getConnection();
