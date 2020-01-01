@@ -1,24 +1,35 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthContext } from "../provider/AuthContext";
+import { connect } from "react-redux";
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        if (rest.user.islogin) {
+          console.log("is Login from re", rest.user);
+          return <Component {...props} />
+        } else {
+          return <Redirect
+            to={{ pathname: "/login", state: { from: props.location } }}
+          />
+        }
+      }
+      }
+    />
+  );
+}
 
-export const PrivateRoute = ({ component: Component, ...rest }) => (
-  <AuthContext.Consumer>
-    {context => {
-      return (
-        <Route
-          {...rest}
-          render={props =>
-            context.islogin ? (
-              <Component {...props} />
-            ) : (
-              <Redirect
-                to={{ pathname: "/login", state: { from: props.location } }}
-              />
-            )
-          }
-        />
-      );
-    }}
-  </AuthContext.Consumer>
-);
+const mapStateToProps = (state) => {
+  console.log("State from Store", state.user);
+  return { user: state.user };
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    isLogin: () => {
+      dispatch({ type: "ISLOGIN" })
+    }
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRoute)
+

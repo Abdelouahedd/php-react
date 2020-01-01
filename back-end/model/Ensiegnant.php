@@ -1,7 +1,9 @@
 <?php
 class Ensiegnant extends Utilisateur
 {
-    public function __construct($id, $nom, $prenom, $email, $tele){
+    //private $spec;
+    public function __construct($id, $nom, $prenom, $email, $tele/*,$spec*/){
         parent::__construct($id, $nom, $prenom, $email, $tele);
+      //  $this->spec = $spec;
     }
 }

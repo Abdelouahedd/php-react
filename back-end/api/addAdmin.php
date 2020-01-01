@@ -1,8 +1,10 @@
 <?php
-require_once('../controllers/EnsiegnantDaoImp.php');
+
+require_once('../controllers/ChefDepartementDaoImp.php');
 require "../vendor/autoload.php";
 require_once ("../helper/protected.php");
 require_once ("../config/config.php");
+
 use \Firebase\JWT\JWT;
 
 header("Access-Control-Allow-Origin: *");
@@ -13,29 +15,25 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 
 $response = array();
-$ens = new EnsiegnatDaoImp();
-
+$ens = new ChefDepartementDaoImp();
 
 
 if(getJwt()!= null){
     try{
-      //  $decoded = JWT::decode($jwt, secret_key, array('HS256'));
+       // $decoded = JWT::decode($jwt, secret_key, array('HS256'));
         if ($_SERVER['REQUEST_METHOD'] == 'POST' AND $_SERVER['CONTENT_TYPE']=='application/json') {
             $var = json_decode(file_get_contents("php://input"));
-            if (
-                isset($var->email) and
-                isset($var->nom) and
-                isset($var->prenom) and isset($var->tele) and isset($var->passwrd)
-            ) {
+            print_r($var);
+            if (isset($var->email) and isset($var->nom) and isset($var->prenom) and isset($var->tele) and isset($var->passwrd)) {
                 if($ens->userExiste($var->email) == 1){
                     $response["error"] = true;
-                    $response["message"] = "User Existe !!";
+                    $response["message"] = "Admin Existe !!";
                 }else{
-                    $result = $ens->ajouterEnsiegnat($var);
+                    $result = $ens->ajouterAdmin($var);
                     if ($result == 1) {
                         http_response_code(201);
                         $response['error'] = false;
-                        $response['message'] = "User registered successfully";
+                        $response['message'] = "Admin registered successfully";
                     } elseif ($result == 2) {
                         http_response_code(208);
                         $response['error'] = true;
@@ -54,7 +52,7 @@ if(getJwt()!= null){
     }catch (Exception $e){
         http_response_code(401);
         $response["error"] = true;
-        $response["message"] = "Access denied. $e->getMessage()";
+        $response["message"] = "Access denied.".$e->getMessage();
     }
 }else{
     http_response_code(401);

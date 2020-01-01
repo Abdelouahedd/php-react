@@ -16,9 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND $_SERVER['CONTENT_TYPE']=='applicat
             $token = array(
                 "iss" => issuer_claim,
                 "aud" => audience_claim,
-                "data" => array(
-                    $row
-                ));
+                "iat" => time(),
+                "nbf" => time()+10,
+                "exp" => time()+60,
+                "admine"=>true,
+                "data" =>  $row
+            );
             http_response_code(200);
             $jwt = JWT::encode($token, secret_key);
             $response["error"] =  "false";
