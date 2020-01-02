@@ -6,24 +6,33 @@ import 'font-awesome/css/font-awesome.min.css';
 import SideBar from "./sideBar";
 import Footer from "./Footer";
 import Dashboard from "./Dashboard";
+import  ListeProfs from "./Ensiegnant/ListeProfs";
+import { Route, Switch } from "react-router-dom";
+import NavBar from "../navBar/NavBar";
+import AjouterProf from "./Ensiegnant/AjouterProf";
 
 class Section extends Component {
   render() {
     return (
       <React.Fragment>
+        <NavBar />
         <div id="wrapper">
           <SideBar />
           <div id="content-wrapper" className="d-flex flex-column">
-            <div id="content">  
+            <div id="content">
               <div className="container-fluid">
-                <Dashboard />
+                <Switch>
+                  <Route exact path="/" component={Dashboard} />
+                  <Route path="/listProf" component={ListeProfs} />
+                  <Route path="/ajouterProf" component={AjouterProf} />
+                </Switch>
               </div>
             </div>
             <Footer />
           </div>
         </div>
       </React.Fragment>
-    );  
+    );
   }
 }
 
@@ -35,4 +44,4 @@ const mapDispatchToProps = dispatch => {
   return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Section);
+export default (connect(mapStateToProps, mapDispatchToProps)(Section));

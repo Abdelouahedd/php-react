@@ -3,7 +3,6 @@ require_once('../controllers/EnsiegnantDaoImp.php');
 require "../vendor/autoload.php";
 require_once ("../helper/protected.php");
 require_once ("../config/config.php");
-use \Firebase\JWT\JWT;
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");

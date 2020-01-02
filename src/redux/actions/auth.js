@@ -22,14 +22,14 @@ export const authFail = (error) => {
         error: error
     };
 };
-export const logOut = (state,action)=>{
+export const logOut = (state, action) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         idToken: "",
         message: "log out",
-        error:false
+        error: false
     };
-  }
+}
 export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
@@ -38,13 +38,14 @@ export const auth = (email, password) => {
             passwrd: password
         };
         let url = 'http://127.0.0.1/php-react/back-end/api/loginProf.php';
-         axios.post(url, authData)
+        axios.post(url, authData)
             .then(response => {
                 dispatch(authSuccess(response.data.jwt, response.data.message));
                 history.push("/");
             })
             .catch(err => {
                 console.log(err);
+                alert(err);
                 dispatch(authFail(err));
             });
     };

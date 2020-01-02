@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
+
 var axios = require("axios");
 const url = "http://127.0.0.1/php-react/back-end/api";
 
@@ -27,9 +29,12 @@ export function loginChef(email, pass) {
         });
 }
 
-export function getAllProfs() {
-    axios.get(`${url}/listProfs.php`)
+export async function getAllProfs() {
+    return await axios.get(`${url}/listProfs.php`)
         .then(res => {
             console.log(res);
         });
 }
+
+
+

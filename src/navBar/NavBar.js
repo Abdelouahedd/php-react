@@ -5,12 +5,15 @@ import { IoMdLogOut } from "react-icons/io";
 import logo from "../images/logoEnsa.png";
 import * as actions from '../redux/actions/auth';
 import history from '../history';
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
-import "font-awesome/css/font-awesome.min.css";
 import { connect } from "react-redux";
+// var jwtDecode = require('jwt-decode');
+// var decoded = jwt_decode(token);
+
 class NavBar extends Component {
 
+  
+   
   logOut = (e) => {
     e.preventDefault();
     this.props.onLogout();
