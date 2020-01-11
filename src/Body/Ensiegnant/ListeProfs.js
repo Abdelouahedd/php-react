@@ -17,15 +17,15 @@ export class ListeProfs extends Component {
         // })
         // console.log(newProfs);
         // this.setState({ profs: newProfs });
-        const pro = {emailP}
-        Axios.delete(`${url}/deleteProf.php`,pro)
+        const pro = JSON.stringify({emailP})
+        Axios.post(`${url}/deleteProf.php`,pro)
             .then(res => {
-                console.log(res.data.message);
+                console.log(res.data);
                 var newProfs = this.state.profs.filter((e) => {
-                    return e.email === emailP;
+                    return e.email !== emailP;
                 })
                 this.setState({ profs: newProfs });
-                //alert("hay");
+               
             }).catch((error) => {
                 console.log("Erooororor" + error);
                 alert(error)
@@ -38,7 +38,6 @@ export class ListeProfs extends Component {
             .then(res => {
                 console.log(res.data.message);
                 this.setState({ profs: res.data.message });
-                //alert("hay");
             }).catch((error) => {
                 console.log("Erooororor" + error);
                 alert(error)

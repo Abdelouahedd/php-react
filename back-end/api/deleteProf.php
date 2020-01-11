@@ -3,10 +3,10 @@ require_once('../controllers/EnsiegnantDaoImp.php');
 require_once("../helper/protected.php");
 require_once("../config/config.php");
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:3000");
 header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: DELETE");
-header("Access-Control-Max-Age: 3600");
+// header("Access-Control-Allow-Methods: DELETE");
+// header("Access-Control-Max-Age: 3600");
 // header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 
@@ -35,9 +35,9 @@ $ens = new EnsiegnatDaoImp();
 //     $response["error"] = true;
 //     $response["message"] = "Access denied";
 // }
-if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+if ($_SERVER['REQUEST_METHOD'] == "POST" OR $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     $var = json_decode(file_get_contents("php://input"));
-    $data = $ens->deleteEnsiegnat($var->email);
+    $data = $ens->deleteEnsiegnat($var->emailP);
     if($data == 1){
         $response["error"] = "false";
         $response["message"] = "Ensiagnat a était supprimé";

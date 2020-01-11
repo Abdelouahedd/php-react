@@ -10,6 +10,7 @@ import  ListeProfs from "./Ensiegnant/ListeProfs";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "../navBar/NavBar";
 import AjouterProf from "./Ensiegnant/AjouterProf";
+import ajouterFormation from "./formation/ajouterFormation";
 
 class Section extends Component {
   render() {
@@ -25,6 +26,7 @@ class Section extends Component {
                   <Route exact path="/" component={Dashboard} />
                   <Route path="/listProf" component={ListeProfs} />
                   <Route path="/ajouterProf" component={AjouterProf} />
+                  <Route path="/ajouterFormation" component={ajouterFormation} />
                 </Switch>
               </div>
             </div>

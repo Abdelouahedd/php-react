@@ -51,7 +51,7 @@ const sideBar = () => {
       <div className="sidebar-heading">Formation</div>
 
       <li className="nav-item">
-        <Link className="nav-link collapsed" to="#" >
+        <Link className="nav-link collapsed" to={"/ajouterFormation"} >
           <IoMdSchool/>&nbsp;
           <span>Ajouter formation</span>
         </Link>
