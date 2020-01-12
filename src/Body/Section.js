@@ -11,6 +11,9 @@ import { Route, Switch } from "react-router-dom";
 import NavBar from "../navBar/NavBar";
 import AjouterProf from "./Ensiegnant/AjouterProf";
 import ajouterFormation from "./formation/ajouterFormation";
+import { listFormation } from "./formation/listFormation";
+import { ajouterModule } from "./module/ajouterModule";
+import { listModules } from "./module/listModules";
 
 class Section extends Component {
   render() {
@@ -27,6 +30,9 @@ class Section extends Component {
                   <Route path="/listProf" component={ListeProfs} />
                   <Route path="/ajouterProf" component={AjouterProf} />
                   <Route path="/ajouterFormation" component={ajouterFormation} />
+                  <Route path="/listFormation" component={listFormation} />
+                  <Route path="/AjouterModule" component={ajouterModule} />
+                  <Route path="/listModule" component={listModules} />
                 </Switch>
               </div>
             </div>

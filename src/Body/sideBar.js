@@ -42,7 +42,7 @@ const sideBar = () => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" href="charts.html">
+        <Link className="nav-link" to={"/"}>
          <FaRegCheckSquare/> &nbsp;
           <span>valider les choix</span></Link>
       </li>
@@ -58,7 +58,7 @@ const sideBar = () => {
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link" href="charts.html">
+        <Link className="nav-link" to={"/listFormation"}>
          <FaUniversity/>&nbsp;
           <span>List des formations</span></Link>
       </li>
@@ -68,14 +68,14 @@ const sideBar = () => {
       <div className="sidebar-heading">Module</div>
 
       <li className="nav-item">
-        <Link className="nav-link collapsed" to="#" >
+        <Link className="nav-link collapsed" to={"/AjouterModule"} >
           <MdLibraryAdd/>&nbsp;
           <span>Ajouter Module</span>
         </Link>
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link" href="charts.html">
+        <Link className="nav-link" to={"/listModule"}>
          <FaUserGraduate/>&nbsp;  
           <span>List des Modules</span></Link>
       </li>

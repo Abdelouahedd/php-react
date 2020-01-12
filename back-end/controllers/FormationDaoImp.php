@@ -31,11 +31,27 @@ class FormationDaoImp implements FormationDao
 
     public function deleterFormation($id)
     {
-        // TODO: Implement deleterFormation() method.
+        $cnx = Cnx::getInstance();
+        $con = $cnx->getConnection();
+        $stmt = $con->prepare("DELETE FROM formation WHERE id = ? ");
+        $stmt->bindParam(1,$id);
+        if($stmt->execute()){
+            return 1;
+        }else{
+            return 2;
+        }
     }
 
     public function displayFormation($id)
     {
         // TODO: Implement displayFormation() method.
+    }
+    public  function getAll(){
+        $cnx = Cnx::getInstance();
+        $con = $cnx->getConnection();
+        $sql = "SELECT * FROM formation";
+        $stm = $con->prepare($sql);
+        $stm->execute();
+        return ($stm->fetchAll(PDO::FETCH_ASSOC));
     }
 }

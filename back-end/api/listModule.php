@@ -1,5 +1,5 @@
 <?php
-require_once('../controllers/FormationDaoImp.php');
+require_once('../controllers/ModuleDaoImp.php');
 require_once("../helper/protected.php");
 require_once("../config/config.php");
 
@@ -10,7 +10,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 
 $response = array();
-$ens = new FormationDaoImp();
+$ens = new ModuleDaoImp();
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

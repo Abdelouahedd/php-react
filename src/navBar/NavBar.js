@@ -32,9 +32,9 @@ class NavBar extends Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#features">Memebre du département</Nav.Link>
+            {/* <Nav.Link href="#features">Memebre du département</Nav.Link>
             <Nav.Link href="#pricing"> Formation</Nav.Link>
-            <Nav.Link href="#link">Liste des modules</Nav.Link>
+            <Nav.Link href="#link">Liste des modules</Nav.Link> */}
           </Nav>
           <Nav>
             <NavDropdown title="Abdelouahed ennouri" id="basic-nav-dropdown">
