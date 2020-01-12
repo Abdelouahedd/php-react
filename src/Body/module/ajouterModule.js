@@ -13,8 +13,9 @@ export class ajouterModule extends Component {
             description: "",
             idFormation: ""
         }
+        this.getope = this.getope.bind(this);
     }
-    componentDidMount = () => {
+    componentDidMount() {
         Axios.get(`${url}/listFormation.php`,
         /*  { headers: { "Authorization": `Bearer ${this.props.user.idToken}` } }*/)
             .then(res => {
@@ -24,8 +25,9 @@ export class ajouterModule extends Component {
                 console.log("Erooororor" + error);
                 alert(error)
             });
-            
     }
+
+
 
     onSubmit = (e) => {
         e.preventDefault();
@@ -47,30 +49,27 @@ export class ajouterModule extends Component {
             })
 
     }
-    
+
     onChangeLibelle = (e) => {
         this.setState({ libelle: e.target.value })
     }
-    
+
     onChangeSemestre = (e) => {
         this.setState({ semestre: e.target.value })
     }
-    
+
     onChangeDescription = (e) => {
-         let file = e.target.files[0];
-         this.setState({ description:file });
+        let file = e.target.files[0];
+        this.setState({ description: file });
     }
 
     getope = (e) => {
-     
+        console.log(e.target.value);
         this.setState({ idFormation: e.target.value });
-        // var newForms = this.state.formation.filter((e) => {
-        //     return e.id === this.state.idFormation ;
-        // })
-        // this.setState({form:newForms});
     }
 
     render() {
+
         return (
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -86,15 +85,21 @@ export class ajouterModule extends Component {
                             <div className="form-group col-6 ">
                                 <div className="form-group">
                                     <label htmlFor="">Formation</label>
-                                    <select className="form-control" name="type" id=""
+                                    <select className="form-control"
+                                        value={this.state.idFormation}
                                         onChange={this.getope}
+                                    // defaultValue={this.state.formation[0].id}
                                     >
+
+
                                         {
+
                                             this.state.formation.map(f => {
-                                                return <option key ={f.id} value={f.id}>{f.libelle}</option>
+                                                return <option key={f.id} value={f.id}>{f.libelle}</option>
                                             })
                                         }
                                     </select>
+
                                 </div>
                             </div>
                             <div className="form-group col-6 ">
@@ -140,6 +145,7 @@ export class ajouterModule extends Component {
         )
     }
 }
+
 
 const mapStateToProps = (state) => ({
 

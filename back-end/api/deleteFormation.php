@@ -12,6 +12,7 @@ $ens = new FormationDaoImp();
 if ($_SERVER['REQUEST_METHOD'] == "POST" OR $_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     $var = json_decode(file_get_contents("php://input"));
     $data = $ens->deleterFormation($var->id);
+
     if($data == 1){
         $response["error"] = "false";
         $response["message"] = "Formation a était supprimé";

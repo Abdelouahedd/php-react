@@ -33,9 +33,12 @@ class FormationDaoImp implements FormationDao
     {
         $cnx = Cnx::getInstance();
         $con = $cnx->getConnection();
+        $f = $this->displayFormation($id);
+
         $stmt = $con->prepare("DELETE FROM formation WHERE id = ? ");
         $stmt->bindParam(1,$id);
-        if($stmt->execute()){
+        $delteFile = unlink("../uploads/".$f["libelle"].".pdf");
+        if( $delteFile && $stmt->execute()){
             return 1;
         }else{
             return 2;
@@ -44,8 +47,15 @@ class FormationDaoImp implements FormationDao
 
     public function displayFormation($id)
     {
-        // TODO: Implement displayFormation() method.
+        $cnx = Cnx::getInstance();
+        $con = $cnx->getConnection();
+        $sql = "SELECT * FROM formation WHERE id = ?";
+        $stm = $con->prepare($sql);
+        $stm->bindParam(1,$id);
+        $stm->execute();
+        return ($stm->fetch(PDO::FETCH_ASSOC));
     }
+
     public  function getAll(){
         $cnx = Cnx::getInstance();
         $con = $cnx->getConnection();

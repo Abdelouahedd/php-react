@@ -14,6 +14,7 @@ import ajouterFormation from "./formation/ajouterFormation";
 import { listFormation } from "./formation/listFormation";
 import { ajouterModule } from "./module/ajouterModule";
 import { listModules } from "./module/listModules";
+import { validerChoix } from "./Ensiegnant/validerChoix";
 
 class Section extends Component {
   render() {
@@ -33,6 +34,7 @@ class Section extends Component {
                   <Route path="/listFormation" component={listFormation} />
                   <Route path="/AjouterModule" component={ajouterModule} />
                   <Route path="/listModule" component={listModules} />
+                  <Route path="/validChoix" component={validerChoix} />
                 </Switch>
               </div>
             </div>

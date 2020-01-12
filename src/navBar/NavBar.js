@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { FaUserAlt } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import logo from "../images/logoEnsa.png";
 import * as actions from '../redux/actions/auth';
@@ -12,8 +11,8 @@ import { connect } from "react-redux";
 
 class NavBar extends Component {
 
-  
-   
+
+
   logOut = (e) => {
     e.preventDefault();
     this.props.onLogout();
@@ -37,13 +36,13 @@ class NavBar extends Component {
             <Nav.Link href="#link">Liste des modules</Nav.Link> */}
           </Nav>
           <Nav>
-            <NavDropdown title="Abdelouahed ennouri" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1" className="dropdown-item">
+            <NavDropdown title="Mr Metrane" id="basic-nav-dropdown">
+              {/* <NavDropdown.Item href="#action/3.1" className="dropdown-item">
                 <FaUserAlt />
                 &nbsp; Profile
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
               <NavDropdown.Item href="#action/3.1" className="dropdown-item"
-                onClick={(e)=>this.logOut(e)}
+                onClick={(e) => this.logOut(e)}
               >
                 <IoMdLogOut />
                 &nbsp; Sign Out

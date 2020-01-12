@@ -9,12 +9,12 @@ const sideBar = () => {
   return (
     <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion">
 
-      <a className="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+      <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/" >
         <div className="sidebar-brand-icon rotate-n-15">
           <GoDashboard />
         </div>
         <div className="sidebar-brand-text mx-3">Admin</div>
-      </a>
+      </Link>
 
       <hr className="sidebar-divider my-0" />
 
@@ -42,7 +42,7 @@ const sideBar = () => {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to={"/"}>
+        <Link className="nav-link" to={"/validChoix"}>
          <FaRegCheckSquare/> &nbsp;
           <span>valider les choix</span></Link>
       </li>

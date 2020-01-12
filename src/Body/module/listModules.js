@@ -3,12 +3,13 @@ import { connect } from 'react-redux'
 import Axios from 'axios';
 const url = "http://127.0.0.1/php-react/back-end/api";
 const urlDown = "http://127.0.0.1/php-react/back-end/uploads/modules/";
+
 export class listModules extends Component {
     constructor(props) {
         super(props);
         this.state = {
             module: [],
-            formation:""
+            formation: ""
         }
     }
 
@@ -68,7 +69,9 @@ export class listModules extends Component {
                                             <td>{module.libelle}</td>
                                             <td>{module.semestre}</td>
                                             <td>
-                                                <a href={urlDown + module.description}>
+                                                <a href={urlDown + module.description}
+                                                    target="_blank"
+                                                >
                                                     {module.description}
                                                 </a>
                                             </td>

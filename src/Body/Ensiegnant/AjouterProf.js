@@ -79,7 +79,7 @@ export default class AjouterProf extends Component {
                                 <label htmlFor="recipient-name" className="control-label">Email :</label>
                                 <input className="form-control required"
                                     placeholder="Email" value={email}
-                                    pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/"
+                                        
                                     name="email" onChange={this.onChangeEmail}
                                 />
                             </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Axios from 'axios';
 const url = "http://127.0.0.1/php-react/back-end/api";
+const urlDown = "http://127.0.0.1/php-react/back-end/uploads/";
 
 export class listFormation extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ export class listFormation extends Component {
     }
     deleteForm = (id) => {
 
-        const pro = JSON.stringify({id})
+        const pro = JSON.stringify({ id })
         Axios.post(`${url}/deleteFormation.php`, pro)
             .then(res => {
                 console.log(res.data);
@@ -65,13 +66,19 @@ export class listFormation extends Component {
                                             <td>{formation.type}</td>
                                             <td>{formation.libelle}</td>
                                             <td>{formation.nbrSemestre}</td>
-                                            <td>{formation.description}</td>
+                                            <td>
+                                                <a href={urlDown + formation.description}
+                                                    target="_blank"
+                                                >
+                                                    {formation.description}
+                                                </a>
+                                            </td>
 
 
                                             <td>
                                                 <button type="button"
                                                     className="btn btn-danger"
-                                                    onClick={()=>this.deleteForm(formation.id)}
+                                                    onClick={() => this.deleteForm(formation.id)}
                                                 >
                                                     delete
                                                 </button>
